@@ -5,7 +5,6 @@ import {
   Switch,
   Route,
   Redirect,
-  Link
 } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./components/Nav";
@@ -18,9 +17,6 @@ const Main=styled.div`
  flex-grow: 1;
  overflow: auto;
 `
-
-
-
 function App() {
   return (
       <Router>
@@ -36,10 +32,11 @@ function App() {
               <Route path="/statistics">
                 <Statistics />
               </Route>
+              <Redirect exact from="/" to="/money" />
               <Route path={'*'}>
                 <NoMatch />
               </Route>
-              <Redirect exact from="/" to="/money" />
+
             </Switch>
           </Main>
           <Nav/>
