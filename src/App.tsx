@@ -1,62 +1,67 @@
 import React from 'react';
 
 import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Redirect,
+    HashRouter as Router,
+    Switch,
+    Route,
+    Redirect,
 } from "react-router-dom";
-import styled from "styled-components";
-import Nav from "./components/Nav";
-const Wrapper=styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-const Main=styled.div`
- flex-grow: 1;
- overflow: auto;
-`
+
+import Layout from "./components/Layout";
+
+
+
 function App() {
-  return (
-      <Router>
-        <Wrapper>
-          <Main>
+    return (
+        <Router>
+
             <Switch>
-              <Route path="/tags">
-                <Tags />
-              </Route>
-              <Route path="/money">
-                <Money />
-              </Route>
-              <Route path="/statistics">
-                <Statistics />
-              </Route>
-              <Redirect exact from="/" to="/money" />
-              <Route path={'*'}>
-                <NoMatch />
-              </Route>
+                <Route path="/tags">
+                    <Tags/>
+                </Route>
+                <Route path="/money">
+                    <Money/>
+                </Route>
+                <Route path="/statistics">
+                    <Statistics/>
+                </Route>
+                <Redirect exact from="/" to="/money"/>
+                <Route path={'*'}>
+                    <NoMatch/>
+                </Route>
 
             </Switch>
-          </Main>
-          <Nav/>
-        </Wrapper>
-      </Router>
-  );
+
+        </Router>
+    );
 }
+
 function NoMatch() {
-  return <div>页面不存在~</div>
+    return <h1>页面不存在~</h1>
 }
+
 function Statistics() {
-  return <h2>统计</h2>;
+    return (
+        <Layout>
+            <h2>统计</h2>
+        </Layout>
+    );
 }
 
 function Tags() {
-  return <h2>标签</h2>;
+    return (
+        <Layout>
+            <h2>标签</h2>
+        </Layout>
+
+        );
 }
 
 function Money() {
-  return <h2>记账</h2>;
+    return (
+        <Layout>
+        <h2>记账</h2>
+    </Layout>);
 }
 
 export default App;
