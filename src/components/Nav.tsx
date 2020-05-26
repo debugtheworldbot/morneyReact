@@ -18,9 +18,9 @@ box-shadow: 0 0 3px rgba(0,0,0,0.25);
        justify-content: center;
        align-items: center;
         .icon{
-        width: 24px;
-        height: 24px;
-        margin: 5px 0;
+        width: 30px;
+        height: 30px;
+        margin: 1px 0;
         }
         &.selected{
         color: #57e767;
