@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import {useTags} from "../../components/useTags";
+import {createId} from '../../lib/createId';
 
 const Wrapper = styled.section`background:#FFFFFF;padding: 12px 16px;flex-grow: 1;
 display: flex;flex-direction: column;justify-content: flex-end;align-items: flex-start;
@@ -28,34 +29,34 @@ display: flex;flex-direction: column;justify-content: flex-end;align-items: flex
 `
 
 type Props = {
-    value: string[],
-    onChange:(value:string[])=>void
+    value: number[],
+    onChange:(selected:number[])=>void
 }
 const TagSection: React.FC<Props> = (props) => {
     const {tags,setTags} = useTags()
-    const selectedTags=props.value
+    const selectedTagIds=props.value
     const onAddTag = () => {
         const tagName = window.prompt("请输入新标签的名称")
         if (tagName !== null) {
-            setTags([...tags, tagName])
+            setTags([...tags, {id:createId(),name:tagName}])
         }
     }
-    const onToggleTag = (tag: string) => {
-        const index = selectedTags.indexOf(tag)
+    const onToggleTag = (tagId: number) => {
+        const index = selectedTagIds.indexOf(tagId)
         if (index >= 0) {
-            props.onChange(selectedTags.filter(t => t !== tag))
+            props.onChange(selectedTagIds.filter(t => t !== tagId))
         } else {
-            props.onChange([...selectedTags, tag])
+            props.onChange([...selectedTagIds, tagId])
         }
     }
-    const getClass = (tag: string) => selectedTags.indexOf(tag) >= 0 ? "selected" : ""
+    const getClass = (tagId: number) => selectedTagIds.indexOf(tagId) >= 0 ? "selected" : ""
 
     return (
         <Wrapper>
             <ol>
                 {tags.map(tag =>
-                    <li onClick={() => onToggleTag(tag)} key={tag}
-                        className={getClass(tag)}>{tag}</li>)}
+                    <li onClick={() => onToggleTag(tag.id)} key={tag.id}
+                        className={getClass(tag.id)}>{tag.name}</li>)}
             </ol>
             <button onClick={onAddTag}>新增标签</button>
         </Wrapper>

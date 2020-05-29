@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import React from "react";
 import Icon from "./icon";
 
