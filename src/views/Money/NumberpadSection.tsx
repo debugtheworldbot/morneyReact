@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React  from "react";
 
 
 const Wrapper = styled.section`
@@ -52,17 +52,28 @@ flex-direction: column;
     }
   }
 `
-const NumberPadSection:React.FC = () => {
-    const [output,_setOutput]=useState<string>('0')
-    const setOutput=(output:string)=>{
-        if(output.length>16){
-            output=output.slice(0,16);
+
+type Props={
+    value:number,
+    onChange:(value:number)=>void
+    ok?:()=>void
+}
+const NumberPadSection: React.FC<Props> = (props) => {
+    const output=props.value.toString()
+    const setOutput = (output: string) => {
+        let value
+        if (output.length > 16) {
+            value=parseFloat(output.slice(0, 16))
+        }else{
+            value=parseFloat(output)
         }
-        _setOutput(output)
+        props.onChange(value)
     }
-    const buttonWrapper=(e:React.MouseEvent)=>{
-        const text=(e.target as HTMLButtonElement).textContent
-        if(text===null){return}
+    const buttonWrapper = (e: React.MouseEvent) => {
+        const text = (e.target as HTMLButtonElement).textContent
+        if (text === null) {
+            return
+        }
         switch (text) {
             case '1':
             case '2':
@@ -74,31 +85,32 @@ const NumberPadSection:React.FC = () => {
             case '8':
             case '9':
             case '0':
-                if(output==='0'){
+                if (output === '0') {
                     setOutput(text)
-                }else {
+                } else {
                     setOutput(output + text)
                 }
                 break;
             case '删除':
-                if(output.length===1){
+                if (output.length === 1) {
                     setOutput('0')
-                }else {
-                    setOutput(output.slice(0,-1))
+                } else {
+                    setOutput(output.slice(0, -1))
                 }
                 break;
             case '清空':
                 setOutput('0')
                 break;
             case '.':
-                   if(output.includes('.')){
-                        return;
-                   }else {
-                        setOutput(output+'.')
-                   }
-
+                if (output.includes('.')) {
+                    return;
+                } else {
+                    setOutput(output + '.')
+                }
                 break;
             case 'OK':
+                if(props.ok){
+                props.ok()}
                 break;
         }
     }
