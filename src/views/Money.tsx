@@ -14,35 +14,19 @@ flex-direction: column;
 function Money() {
     const [selected,setSelected]=useState({
         tags:[] as string[],
-        notes:'',
+        note:'',
         category: '-' as ('-'|'+'),
         amount:0
     })
+    const onChange=(obj:Partial<typeof selected>)=>{
+        setSelected({...selected, ...obj})
+    }
     return (
         <MyLayout>
-            {selected.tags.join(',')};
-            {selected.notes}
-            {selected.category}
-            {selected.amount}
-            <TagsSection value={selected.tags} onChange={(tags)=>setSelected({
-                ...selected,
-                tags:tags})}/>
-            <NoteSection  value={selected.notes}
-                            onChange={(note:string)=>{setSelected({
-                                ...selected,
-                                notes:note
-                            })}}/>
-            <CategorySection value={selected.category}
-                                onChange={(category:('-'|'+'))=>setSelected({
-                                    ...selected,
-                                    category: category
-                                })}/>
-            <NumberPadSection value={selected.amount}
-                                onChange={(amount:number)=>setSelected({
-                                    ...selected,
-                                    amount: amount
-                                })}
-                                ok={()=>{}}/>
+            <TagsSection value={selected.tags} onChange={(tags)=>onChange({tags})}/>
+            <NoteSection value={selected.note} onChange={(note)=>{onChange({note})}}/>
+            <CategorySection value={selected.category} onChange={(category)=>onChange({category})}/>
+            <NumberPadSection value={selected.amount} onChange={(amount)=>onChange({amount})} ok={()=>{}}/>
         </MyLayout>);
 }
 
