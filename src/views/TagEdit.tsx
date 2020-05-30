@@ -34,8 +34,9 @@ const Label=styled.label`
     height: 44px;
    }
 `
+
 const TagEdit: React.FC = (props) => {
-    const {findTag} = useTags()
+    const {findTag,updateTag} = useTags()
     let {id} = useParams<Params>()
     const tag = findTag(parseInt(id))
     return (
@@ -48,7 +49,8 @@ const TagEdit: React.FC = (props) => {
             <div>
                 <Label>
                         <span>标签名</span>
-                        <input type="text" placeholder={"标签名"} value={tag.name}/>
+                        <input type="text" placeholder={"标签名"} value={tag.name}
+                        onChange={(e)=>{updateTag(tag.id,{name:e.target.value})}}/>
                 </Label>
                 <Center>
                     <Button>删除标签</Button>
