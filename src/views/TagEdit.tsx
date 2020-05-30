@@ -1,6 +1,6 @@
 import React from "react";
 import {useTags} from "../components/useTags";
-import {useParams} from 'react-router-dom'
+import {NavLink, useParams} from 'react-router-dom'
 import Layout from "../components/Layout";
 import Icon from "../components/icon";
 import {Button} from "../components/Button";
@@ -35,7 +35,7 @@ const Label=styled.label`
    }
 `
 
-const TagEdit: React.FC = (props) => {
+const TagEdit: React.FC = () => {
     const {findTag,updateTag,deleteTag} = useTags()
     let {id} = useParams<Params>()
     const tag = findTag(parseInt(id))
@@ -43,7 +43,9 @@ const TagEdit: React.FC = (props) => {
         return (
             <Layout>
                 <Topbar>
+                    <NavLink to="/tags">
                     <Icon name={'left'}/>
+                    </NavLink>
                     <span>编辑标签</span>
                     <Icon/>
                 </Topbar>
