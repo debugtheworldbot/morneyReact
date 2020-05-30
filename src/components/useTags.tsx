@@ -26,6 +26,12 @@ const useTags = () => { //封装一个自定义hook，必须以use开头
         tagsClone.splice(index,1,{id:id,name:obj.name}) //change content of deep clone
         setTags(tagsClone)
     }
-    return {tags, setTags,findTag,updateTag,findIndex}
+    const deleteTag=(id:number)=>{
+        const index=findIndex(id)
+        const tagsClone=JSON.parse(JSON.stringify(tags)) //deep clone
+        tagsClone.splice(index,1) //change content of deep clone
+        setTags(tagsClone)
+    }
+    return {tags, setTags,findTag,updateTag,findIndex,deleteTag}
 }
 export {useTags}

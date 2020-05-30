@@ -36,27 +36,37 @@ const Label=styled.label`
 `
 
 const TagEdit: React.FC = (props) => {
-    const {findTag,updateTag} = useTags()
+    const {findTag,updateTag,deleteTag} = useTags()
     let {id} = useParams<Params>()
     const tag = findTag(parseInt(id))
-    return (
-        <Layout>
-            <Topbar>
-                <Icon name={'left'}/>
-                <span>编辑标签</span>
-                <Icon />
-            </Topbar>
-            <div>
-                <Label>
+    if(tag) {
+        return (
+            <Layout>
+                <Topbar>
+                    <Icon name={'left'}/>
+                    <span>编辑标签</span>
+                    <Icon/>
+                </Topbar>
+                <div>
+                    <Label>
                         <span>标签名</span>
                         <input type="text" placeholder={"标签名"} value={tag.name}
-                        onChange={(e)=>{updateTag(tag.id,{name:e.target.value})}}/>
-                </Label>
-                <Center>
-                    <Button>删除标签</Button>
-                </Center>
-            </div>
-        </Layout>
-    )
+                               onChange={(e) => {
+                                   updateTag(tag.id, {name: e.target.value})
+                               }}/>
+                    </Label>
+                    <Center>
+                        <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+                    </Center>
+                </div>
+            </Layout>
+        )
+    }else{
+        return (
+            <Layout>
+                <Center>tag不存在~</Center>
+            </Layout>
+        )
+    }
 }
 export {TagEdit}
