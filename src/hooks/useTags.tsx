@@ -39,6 +39,10 @@ const useTags = () => { //封装一个自定义hook，必须以use开头
             setTags([...tags, {id:createId(),name:tagName}])
         }
     }
-    return {tags, setTags,findTag,updateTag,findIndex,deleteTag,addTag}
+    const getName=(id:number)=>{
+        const i =tags.filter(t=>t.id===id)[0]
+        return i ? i.name:''
+    }
+    return {tags, setTags,findTag,updateTag,findIndex,deleteTag,addTag,getName}
 }
 export {useTags}
