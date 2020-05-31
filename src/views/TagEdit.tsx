@@ -1,5 +1,5 @@
 import React from "react";
-import {useTags} from "../components/useTags";
+import {useTags} from "../hooks/useTags";
 import {NavLink, useParams} from 'react-router-dom'
 import Layout from "../components/Layout";
 import Icon from "../components/icon";
@@ -66,6 +66,13 @@ const TagEdit: React.FC = () => {
     }else{
         return (
             <Layout>
+                <Topbar>
+                    <NavLink to="/tags">
+                        <Icon name={'left'}/>
+                    </NavLink>
+                    <span>编辑标签</span>
+                    <Icon/>
+                </Topbar>
                 <Center>tag不存在~</Center>
             </Layout>
         )
