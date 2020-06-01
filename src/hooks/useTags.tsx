@@ -31,6 +31,7 @@ const useTags = () => { //封装一个自定义hook，必须以use开头
         setTags(tags.map(tag=>tag.id===id?{id,name:obj.name}:tag))
     }
     const deleteTag=(id:number)=>{
+        alert("删除成功")
         setTags(tags.filter(tag=>tag.id!==id))
     }
     const addTag = () => {

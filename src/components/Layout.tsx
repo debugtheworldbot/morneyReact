@@ -11,9 +11,6 @@ const Main = styled.div`
  flex-grow: 1;
  overflow: auto;
 `
-type Props={
-    children:string
-}
 
 const Layout=(props:any)=>{
     return(

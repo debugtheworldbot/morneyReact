@@ -58,7 +58,9 @@ const TagEdit: React.FC = () => {
                                }}/>
                     </Label>
                     <Center>
+
                         <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+
                     </Center>
                 </div>
             </Layout>
