@@ -6,6 +6,12 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  @media(min-width: 450px){
+    && ::-webkit-scrollbar{
+  width: 0;
+  }
+  }
+
 `
 const Main = styled.div`
  flex-grow: 1;

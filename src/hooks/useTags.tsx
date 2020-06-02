@@ -8,10 +8,10 @@ const useTags = () => { //封装一个自定义hook，必须以use开头
         let localTags = JSON.parse(window.localStorage.getItem('tags')||'[]')
         if(localTags.length===0){
             localTags=[
-                {id: createId(), name: '衣'},
-                {id: createId(), name: '食'},
-                {id: createId(), name: '住'},
-                {id: createId() ,name: '行'},]
+                {id: createId(), name: '餐饮美食'},
+                {id: createId(), name: '服饰美容'},
+                {id: createId(), name: '交通出行'},
+                {id: createId() ,name: '日常娱乐'},]
         }
         setTags(localTags)
     },[]) //run when component hooking

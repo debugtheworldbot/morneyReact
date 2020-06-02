@@ -9,12 +9,17 @@ font-size:24px;
     >li{
     width: 50%;
     text-align: center;
-    padding: 18px 0 ;
+    padding: 10px 0 ;
     position: relative;
+    transition: all 0.3s ;
+    cursor: pointer;
+    &:hover{
+         background:#e0e0e0;
+    }
     &.selected::after{
     content: '';
     display: block;
-    height: 3px;
+    height: 2px;
     background:#333;
     position: absolute;
     bottom: 0;

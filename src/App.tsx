@@ -12,6 +12,9 @@ import {TagEdit} from "./views/TagEdit";
 
 const AppWrapper=styled.div`
 color: #333;
+max-width:450px ;
+margin: 0 auto;
+
 `
 
 

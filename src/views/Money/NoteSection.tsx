@@ -16,7 +16,7 @@ const Wrapper=styled.section`
     border: none;
     background:none;
     flex-grow: 1;
-    height: 72px;
+    height: 38px;
    }
   }
 `
