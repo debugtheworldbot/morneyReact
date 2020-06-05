@@ -5,6 +5,9 @@ import styled from "styled-components";
 import {RecordItem, useRecords} from "../hooks/useRecords";
 import {useTags} from "../hooks/useTags";
 import day from 'dayjs'
+
+
+
 const  CategoryWrapper=styled.div`
   background:white;
 `
@@ -46,6 +49,7 @@ function Statistics() {
         if(a[0]<b[0])return 1
         return 0
     })
+
     return (
         <Layout>
             <CategoryWrapper>
@@ -71,10 +75,7 @@ function Statistics() {
                         })}
                     </div>
                 </div>
-
             )}
-
-
         </Layout>
     );
 }

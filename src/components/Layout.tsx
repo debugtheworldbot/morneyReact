@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  @media(min-width: 450px){
+  @media(min-width: 400px){
     && ::-webkit-scrollbar{
   width: 0;
   }
